@@ -71,7 +71,7 @@
 	git pull 别名/远程库HTTPS:URL/SSH 分支名
 
 # 克隆到本地库：
-	git clone 远程库HTTPS:URL
+	git clone 远程库HTTPS:URL/SSH
 ```
 
 SSH公钥免密登录

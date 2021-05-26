@@ -59,7 +59,7 @@
 
 远程库
 # 远程库起别名：
-	git remote add 别名 远程库url
+	git remote add 别名 远程库HTTPS:URL/SSH
 
 # 查看远程库别名：
 	git remote -v
@@ -75,8 +75,13 @@
 ```
 
 SSH公钥免密登录
-1.生成本地SSH密钥（C:\Users\yi\.ssh）：ssh-keygen -t rsa -C yixianjun8052@163.com
-2.在github/gitee个人账户上设置SSH公钥保存。
+
+```
+# 1.生成本地SSH密钥（C:\Users\yi\.ssh）-C 注释：
+	ssh-keygen -t rsa -C yixianjun8052@163.com
+	
+# 2.在github/gitee个人账户上设置SSH公钥保存。
+```
 
 # SVN
 

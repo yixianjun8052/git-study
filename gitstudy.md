@@ -26,6 +26,9 @@
 
 # 添加到暂存区：
 	git add
+	
+# 重命名
+	git mv file new
 
 # 放弃文件到暂存：
 	git restore --staged file

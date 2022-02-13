@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>别瞎转悠，浪费生命</title>
+	<meta charset="utf-8" />
+	<meta name="auther" content="yixianjun" />
+	<meta name="description" content="上网要有目的性、针对性" />
+	<base target="_blank" />
+	<!-- <link rel="stylesheet" href="./index.css"> -->
+	<style type="text/css">
+		/*初始化*/
+		body,
+		div,
+		ul,
+		li,
+		a,
+		p {
+			margin: 0;
+			padding: 0;
+		}
+
+		li {
+			list-style: none;
+		}
+
+		a {
+			text-decoration: none;
+			color: blue;
+		}
+
+		body {
+			/* background-color: #cce8cf; */
+			background-color: #222831;
+			font-size: 1.5em;
+			color: white;
+		}
+
+		body>div {
+			width: 60%;
+			margin: 50px auto 0;
+		}
+
+		summary {
+			line-height: 40px;
+		}
+
+		summary:hover {
+			background-color: gray;
+		}
+
+		summary~div,
+		ul {
+			margin-left: 1em;
+		}
+
+		/* 上网思路导航 */
+		#nav li {
+			display: inline;
+			margin-right: 0.5em;
+		}
+
+		/* 每日行为监测计分 */
+		#daily_score ul {
+			margin-left: 2em;
+			margin-right: 1em;
+		}
+
+		#daily_score li {
+			list-style-type: disc;
+			position: relative;
+			/* height: 1.5em;
+			line-height: 1.5em; */
+			margin-top: 0.5em;
+			margin-bottom: 0.5em;
+		}
+
+		#daily_score li:hover {
+			background-color: gray;
+		}
+
+		#daily_score li>input {
+			width: 2em;
+			height: 2em;
+			/* 子元素绝对定位，其相对的包容块父元素设置相对定位。 */
+			position: absolute;
+			right: 0;
+			/* 绝对定位的子元素在父元素中设置垂直居中：子元素top设置为50%，margin-top减去自身高的一半。 */
+			top: 50%;
+			margin-top: -1em;
+		}
+
+		/* 作息计分表 */
+		table,
+		tr,
+		th,
+		td {
+			border: 1px solid #fff;
+		}
+
+		table {
+			border-collapse: collapse;
+			margin: 1em auto;
+			width: 90%;
+			text-align: center;
+		}
+
+		table tr td:nth-child(3) {
+			text-align: left;
+			text-indent: 0.5em;
+		}
+
+		th,
+		td {
+			padding-top: 5px;
+			padding-bottom: 5px;
+		}
+
+		td>input {
+			width: 2em;
+			height: 2em;
+			vertical-align: middle;
+		}
+
+		#should_do {
+			margin-bottom: 10px;
+		}
+
+		#should_do_sth {
+			font-size: 2em;
+			/* line-height: 100px; */
+		}
+
+		#should_do_sth+span {
+			font-size: 1em;
+		}
+	</style>
+</head>
+
+<body>
+	<div>
+		<!-- 提醒此时应该做什么 -->
+		<div id="should_do">
+			<span id="should_do_sth">should do sth</span>&nbsp;<span>啦，靓仔</span>
+		</div>
+
+		<!-- 上网思路导航 -->
+		<div id="nav">
+			<details>
+				<summary>没目标，没思路，别导航，哪凉快哪呆着去</summary>
+				<div>
+					<details>
+						<summary>常用</summary>
+						<ul>
+							<li><a href="https://www.aliyundrive.com/drive/">阿里云盘</a></li>
+							<li><a href="https://pan.baidu.com/">百度网盘</a></li>
+							<li><a href="http://192.168.1.1/">TP-LINK</a></li>
+							<li><a href="https://mail.163.com/">163邮箱</a></li>
+							<li><a href="http://sz.bendibao.com/">深圳本地宝</a></li>
+							<li><a href="https://map.baidu.com/">百度地图</a></li>
+							<li><a
+									href="https://www.arcgis.com/apps/dashboards/bda7594740fd40299423467b48e9ecf6">COVID-19</a>
+							</li>
+						</ul>
+					</details>
+
+					<details>
+						<summary>学习</summary>
+						<div>
+							<details>
+								<summary class="sec_summary">上课</summary>
+								<ul>
+									<li><a href="http://www.icourses.cn/">爱课程</a></li>
+									<li><a href="https://www.xuetangx.com/">学堂在线</a></li>
+									<li><a href="https://www.icourse163.org/">中国大学MOOC</a></li>
+									<li><a href="http://open.nlc.cn/onlineedu/client/index.htm">国图公开课</a></li>
+								</ul>
+							</details>
+
+							<details>
+								<summary>博物</summary>
+								<ul>
+									<li><a href="https://new.shuge.org/">书格</a></li>
+									<li><a href="https://www.dpm.org.cn/Home.html">故宫博物院</a></li>
+									<li><a href="http://g2.ltfc.net/">中华珍宝馆</a></li>
+									<li><a href="http://www.nlc.cn/" title="国家数字图书馆">国图馆</a></li>
+									<li><a href="https://www.wdl.org/zh/" title="世界数字图书馆">世图馆</a></li>
+									<li><a href="http://h.bkzx.cn/">中国百科全书</a></li>
+								</ul>
+							</details>
+
+							<details>
+								<summary>政府</summary>
+								<ul>
+									<li><a href="http://www.gov.cn/">政府网</a></li>
+									<li><a href="http://gjzwfw.www.gov.cn/index.html">国家政务服务平台</a></li>
+									<li><a href="http://hrss.sz.gov.cn/">深圳社保局</a></li>
+									<li><a href="http://www.piyao.org.cn/">辟谣</a></li>
+									<li><a href="http://www.12315.cn/">12315</a></li>
+									<li><a href="http://openstd.samr.gov.cn/bzgk/gb/">国标</a></li>
+									<li><a href="http://www.cnipa.gov.cn/">知识产权局</a></li>
+									<li><a href="http://www.samr.gov.cn/">市监局</a></li>
+									<li><a href="http://www.nmpa.gov.cn/">药监局</a></li>
+									<li><a href="http://www.mnr.gov.cn/">自然资源部</a></li>
+									<li><a href="https://www.miit.gov.cn/">工信部</a></li>
+									<li><a href="https://www.tianditu.gov.cn/">天地图</a></li>
+									<li><a href="http://www.cpgi.org.cn/">地理标志</a></li>
+									<li><a href="http://aboc.agri.cn/#/">农业品牌</a></li>
+									<li><a href="https://ipcrs.pbccrc.org.cn/">征信</a></li>
+									<li><a href="http://tingshen.court.gov.cn/">庭审</a></li>
+									<li><a href="http://wenshu.court.gov.cn/">裁判文书</a></li>
+									<li><a href="http://zxgk.court.gov.cn/">执行信息公开</a></li>
+								</ul>
+							</details>
+						</div>
+					</details>
+
+					<details>
+						<summary>挣钱</summary>
+						<div>
+							<details>
+								<summary>找工作</summary>
+								<ul>
+									<li><a href="http://www.gsxt.gov.cn/">企业信用公示</a></li>
+									<li><a href="http://index.baidu.com/">百度指数</a></li>
+									<li><a href="https://www.zhipin.com/">BOSS直聘</a></li>
+									<li><a href="https://www.lagou.com/">拉勾网</a></li>
+								</ul>
+							</details>
+
+							<details>
+								<summary>软件测试</summary>
+								<ul>
+									<li><a href="https://www.satisfice.com/download/allpairs">Allpairs</a></li>
+									<li><a href="https://www.seleniumhq.org/">Selenium</a></li>
+									<li><a href="http://ant.apache.org/">Ant</a></li>
+									<li><a href="http://mirrors.jenkins-ci.org/">jenkins</a></li>
+									<li><a href="https://jmeter.apache.org/">Jmeter</a></li>
+									<li><a href="https://www.getpostman.com/">Postman</a></li>
+									<li><a href="https://www.telerik.com/fiddler">Fiddler</a></li>
+									<li><a href="https://www.wireshark.org/">Wireshark</a></li>
+									<li><a href="http://bbs.51testing.com/forum.php">51testing</a></li>
+									<li><a href="http://appium.io/">appium</a></li>
+									<li><a href="https://testerhome.com/">testerhome</a></li>
+									<li><a href="http://www.byhy.net/">白月黑羽</a></li>
+									<li><a href="http://tungwaiyip.info/software/HTMLTestRunner.html">HTMLTestRunner</a>
+									</li>
+									<li><a href="https://www.juhe.cn/">聚合数据</a></li>
+								</ul>
+							</details>
+
+							<details>
+								<summary>编程语言</summary>
+								<ul>
+									<li><a href="https://www.tiobe.com/tiobe-index/">TIOBE</a></li>
+									<li>
+										<a href="https://www.python.org/">Python</a>
+										(<a href="https://pypi.org/">PyPI</a>
+										<a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/">UCI</a>
+										<a href="https://www.anaconda.com/">Anaconda</a>
+										<a href="https://www.crummy.com/software/BeautifulSoup/">bs</a>
+										<a href="https://scrapy.org/">Scrapy</a>)
+									</li>
+									<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a>
+									</li>
+									<li><a href="https://www.php.net/">PHP</a></li>
+									<li><a href="https://www.oracle.com/java/">Java</a></li>
+									<li><a href="https://isocpp.org/">C++</a></li>
+									<li><a href="https://www.jetbrains.com/pycharm/">PyCharm</a></li>
+									<li><a href="https://visualstudio.microsoft.com/zh-hans/">VScode</a></li>
+								</ul>
+							</details>
+
+							<details>
+								<summary>OS/DB</summary>
+								<ul>
+									<li><a href="https://www.vmware.com/cn.html">VMware</a></li>
+									<li><a href="https://www.virtualbox.org/">Virtualbox</a></li>
+									<li><a href="https://www.redhat.com/zh">RedHat</a></li>
+									<li><a href="https://www.centos.org/">CentOS</a></li>
+									<li><a href="https://ubuntu.com/index_kylin">Ubuntu</a></li>
+									<li><a href="https://www.netsarang.com/en/xshell/">Xshell</a></li>
+									<li><a href="https://www.netsarang.com/en/xftp/">Xftp</a></li>
+									<li><a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/">PuTTY</a></li>
+									<li><a href="https://www.mysql.com/">MySQL</a></li>
+									<li><a href="https://www.oracle.com/">Oracle</a></li>
+									<li><a href="https://www.navicat.com/en/">Navicat</a></li>
+								</ul>
+							</details>
+
+							<details>
+								<summary>代码管理</summary>
+								<ul>
+									<li><a href="https://git-scm.com/">git</a></li>
+									<li><a href="https://github.com/">github</a></li>
+									<li><a href="https://gitee.com/">gitee</a></li>
+									<li><a href="https://about.gitlab.com/">gitlab</a></li>
+									<li><a href="https://tortoisesvn.net/">TortoiseSVN</a></li>
+									<li><a href="https://www.scootersoftware.com/index.php">Beyond_Compare</a></li>
+								</ul>
+							</details>
+
+							<details>
+								<summary>网站编程</summary>
+								<ul>
+									<li><a href="https://www.w3.org/">W3C</a></li>
+									<li><a href="https://www.w3school.com.cn/">W3school</a></li>
+									<li><a href="http://tomcat.apache.org/">Tomcat</a></li>
+									<li><a href="http://httpd.apache.org/">Apache</a></li>
+									<li><a href="http://nginx.org/">Nginx</a></li>
+									<li><a href="https://www.iis.net/">IIS</a></li>
+									<li><a href="https://www.adobe.com/products/photoshop.html">PS</a></li>
+									<li><a href="https://wordpress.org/">WordPress</a></li>
+								</ul>
+							</details>
+
+							<details>
+								<summary>游戏编程</summary>
+								<ul>
+									<li><a href="https://unity.com/">Unity</a></li>
+									<li><a href="https://www.unrealengine.com/zh-CN/">UE</a></li>
+									<li><a href="https://www.cocos.com/">Cocos2d-x</a></li>
+								</ul>
+							</details>
+
+							<details>
+								<summary>电商</summary>
+								<ul>
+									<li><a href="https://www.taobao.com/">淘宝</a></li>
+									<li><a href="https://www.tmall.com/">天猫</a></li>
+									<li><a href="https://www.jd.com/">京东</a></li>
+									<li><a href="https://www.1688.com/">1688</a></li>
+									<li><a href="http://www.yiwugo.com/">义乌购</a></li>
+									<li><a href="https://2.taobao.com/">闲鱼</a></li>
+									<li><a href="https://www.zbj.com/">猪八戒网</a></li>
+									<li><a href="http://www.freemancn.com/">自由人</a></li>
+								</ul>
+							</details>
+						</div>
+					</details>
+
+					<details>
+						<summary>周末才能打开</summary>
+						<div>
+							<details>
+								<summary>豆瓣读书</summary>
+								<ul>
+									<li><a href="https://book.douban.com/series/20606">点校本二十四史修订本（精装）</a></li>
+									<li><a href="https://book.douban.com/series/19406">中国常见植物野外识别手册</a></li>
+									<li><a href="https://book.douban.com/series/34222">中国高等植物彩色图鉴</a></li>
+								</ul>
+							</details>
+
+							<details>
+								<summary>播放/下载</summary>
+								<ul>
+									<li><a href="http://potplayer.tv/">PotPlayer</a></li>
+									<li><a href="https://sourceforge.net/projects/mpcbe/">MPC-BE</a></li>
+									<li><a href="http://www.foobar2000.org/">foobar2000</a></li>
+									<li><a href="http://spek.cc/">Spek</a></li>
+									<li><a href="https://www.adobe.com/products/audition.html">Audition</a></li>
+									<li><a href="http://www.internetdownloadmanager.com/">IDM</a></li>
+									<li><a href="https://www.cctv.com/">CCTV</a></li>
+									<li><a href="https://www.bilibili.com/">bilibili</a></li>
+								</ul>
+							</details>
+
+							<details>
+								<summary>资源搜索</summary>
+								<ul>
+									<li><a href="https://jubt.live/cn/">聚bt</a></li>
+									<li><a href="http://www.banshujiang.cn/">搬书匠</a></li>
+									<li><a href="http://www.vpansou.com">v盘搜</a></li>
+									<li><a href="http://www.yinfans.me/">音范丝</a></li>
+									<li><a href="https://www.hifini.com/">hifini</a></li>
+									<li><a href="http://bbs.musicool.cn/">炫音音乐</a></li>
+									<li><a href="http://www.moofeel.com/forum.php">磨坊音乐</a></li>
+								</ul>
+							</details>
+
+							<details>
+								<summary>游戏</summary>
+								<ul class="li_box">
+									<li>
+										<a href="https://www.minecraft.net/zh-hans/" title="我的世界">Minecraft</a>
+										<a href="https://minecraft-zh.gamepedia.com/Minecraft_Wiki">(Wiki</a>
+										<a href="https://files.minecraftforge.net/">Forge</a>
+										<a href="http://shadersmods.com/">Shaders</a>
+										<a href="https://sonicether.com/seus/">SEUS</a>
+										<a href="https://www.mcbbs.net/portal.php">MCBBS)</a>
+									</li>
+									<li><a href="http://liferestart.syaro.io/view/">人生重开模拟器</a></li>
+									<li><a href="https://2048game.com/">2048</a></li>
+									<li><a href="https://store.steampowered.com/">Steam</a></li>
+									<li><a href="https://www.epicgames.com/store/zh-CN/">Epic</a></li>
+								</ul>
+							</details>
+						</div>
+					</details>
+
+					<details>
+						<summary>工具</summary>
+						<ul>
+							<li><a href="https://rime.im/">小狼豪</a></li>
+							<li><a href="http://zhongguose.com/">中国色</a></li>
+							<li><a href="https://www.itjuzi.com/">IT桔子</a></li>
+							<li><a href="https://www.iplaysoft.com/">异次元软件</a></li>
+							<li><a href="http://www.tampermonkey.net/">油猴插件</a></li>
+							<li><a href="https://greasyfork.org/zh-CN">用户脚本</a></li>
+							<li><a href="http://www.firefox.com.cn/">FireFox</a></li>
+							<li><a href="https://www.voidtools.com/zh-cn/">Everything</a></li>
+							<li><a href="https://www.huorong.cn/">火绒</a></li>
+							<li><a href="http://www.bandisoft.com/">Bandizip</a></li>
+							<li><a href="https://msdn.itellyou.cn/">ITELLYOU</a></li>
+							<li><a href="https://dazwindowsloader.com/">Win激活</a></li>
+							<li><a href="http://www.hdtune.com/index.html">HD Tune</a></li>
+							<li><a href="https://www.aida64.com/">AIDA64</a></li>
+							<li><a href="http://www.diskgenius.cn/">DiskGenius</a></li>
+							<li><a href="https://crystalmark.info/en/">CrystalDiskInfo</a></li>
+							<li><a href="https://getquicker.net/">Quicker</a></li>
+							<li><a href="https://docs.microsoft.com/zh-cn/">MS技术文档</a></li>
+							<li><a href="http://npm.taobao.org/mirrors">淘宝镜像</a></li>
+						</ul>
+					</details>
+				</div>
+			</details>
+		</div>
+
+		<!-- 作息表计分 -->
+		<div id="daily_schedule_score">
+			<details>
+				<summary>作息表，计分：<b id="show_daily_schedule_score">0</b></summary>
+				<table>
+					<tr>
+						<th>时辰</th>
+						<th>时段</th>
+						<th>活动</th>
+						<th>计分</th>
+					</tr>
+					<tr>
+						<td>人定</td>
+						<td>21：30 - 05：30</td>
+						<td id="do_sleep">睡觉</td>
+						<td><input type="checkbox" value="1"></td>
+					</tr>
+					<tr>
+						<td>天明</td>
+						<td>05：30 - 06：00</td>
+						<td id="do_morning_exercise">人起、晨练：体操、军体拳、仰卧起坐、俯卧撑、深蹲</td>
+						<td><input type="checkbox" value="1"></td>
+					</tr>
+					<tr>
+						<td>日出</td>
+						<td>06：00 - 07：00</td>
+						<td id="do_breakfast">刷牙洗脸、漱口喝水 → 吃早饭 → 洗头 → 方便</td>
+						<td><input type="checkbox" value="1"></td>
+					</tr>
+					<tr>
+						<td>晨兴</td>
+						<td>07：00 - 08：00</td>
+						<td id="do_get_groceries">浇花、拭几、扫地 → 买菜【07：20】 | 上班</td>
+						<td><input type="checkbox" value="1"></td>
+					</tr>
+					<tr>
+						<td>日禺</td>
+						<td>08：00 - 12：00</td>
+						<td id="do_forenoon">上午 4 小时：挣钱 | 学习 | 游赏</td>
+						<td><input type="checkbox" value="1"></td>
+					</tr>
+					<tr>
+						<td>日中</td>
+						<td>12：00 - 13：30</td>
+						<td id="do_noon">【做饭、浇花】吃中饭 → 午休</td>
+						<td><input type="checkbox" value="1"></td>
+					</tr>
+					<tr>
+						<td>日斜</td>
+						<td>13：30 - 17：30</td>
+						<td id="do_afternoon">下午 4 小时：挣钱 | 周末健身 | 学习 | 游赏</td>
+						<td><input type="checkbox" value="1"></td>
+					</tr>
+					<tr>
+						<td>日落</td>
+						<td>17：30 - 19：00</td>
+						<td id="do_sunset">吃晚饭、浇花</td>
+						<td><input type="checkbox" value="1"></td>
+					</tr>
+					<tr>
+						<td>夜幕</td>
+						<td>19：00 - 20：30</td>
+						<td id="do_evening">晚上 1.5 小时：喜好 | 加班 → 小结、计划</td>
+						<td><input type="checkbox" value="1"></td>
+					</tr>
+					<tr>
+						<td>莫夜</td>
+						<td>20：30 - 21：00</td>
+						<td id="do_evening_exercise">晚练：军体拳、跑步、跳绳、杠铃深蹲、哑铃</td>
+						<td><input type="checkbox" value="1"></td>
+					</tr>
+					<tr>
+						<td>临睡</td>
+						<td>21：00 - 21：30</td>
+						<td id="do_before_sleep">刷牙 → 洗澡 → 洗衣</td>
+						<td><input type="checkbox" value="1"></td>
+					</tr>
+				</table>
+			</details>
+		</div>
+
+		<!-- 每日行为监测计分 -->
+		<div id="daily_score">
+			<details>
+				<summary>日积脱困，计分：<b id="show_daily_score">0</b></summary>
+				<div>
+					<details>
+						<summary>体弱 —— 炼体（体重、体形、精力、身体素质、寿命）</summary>
+						<div>
+							<details>
+								<summary>一阶：作息规律、饮食规律、消化正常、体态端正、求医问药。</summary>
+								<ul>
+									<li><span>劳逸结合</span><input type="checkbox" value="1"></li>
+									<li><span>21：30 睡觉</span><input type="checkbox" value="1"></li>
+									<li><span>05：30 起床</span><input type="checkbox" value="1"></li>
+									<li><span>12：50 午休</span><input type="checkbox" value="1"></li>
+									<br>
+									<li><span>营养均衡（主食 > 蔬菜 > 肉荤 > 水果）</span><input type="checkbox" value="1"></li>
+									<li><span>正常方便</span><input type="checkbox" value="1"></li>
+									<li><span>吃早饭</span><input type="checkbox" value="1"></li>
+									<li><span>吃午饭</span><input type="checkbox" value="1"></li>
+									<li><span>吃晚饭</span><input type="checkbox" value="1"></li>
+									<br>
+									<li><span>正坐</span><input type="checkbox" value="1"></li>
+									<li><span>目不斜视</span><input type="checkbox" value="1"></li>
+									<br>
+									<li><span>洗洁精（个人卫生：眼耳口鼻、脸发指甲、衣食卧具）</span><input type="checkbox" value="1"></li>
+									<li><span>扫地僧（环境卫生：扫地、拭几、远离噪音、空气质量）</span><input type="checkbox" value="1"></li>
+									<li><span>常见病痛的预防和治疗（感冒/创伤）</span><input type="checkbox" value="1"></li>
+									<br>
+									<li><span>报警（110/119/120/122）</span><input type="checkbox" value="1"></li>
+									<li><span>远人祸（打架斗殴、交通事故、黄赌毒）</span><input type="checkbox" value="1"></li>
+									<li><span>避天灾（风雨雷电、冰雪水火、地震海啸）</span><input type="checkbox" value="1"></li>
+									<li><span>防意外（摔倒、高空坠物、触电、食物中毒、煤气中毒）</span><input type="checkbox" value="1"></li>
+								</ul>
+							</details>
+
+							<details>
+								<summary>二阶：身体素质：速度、抗击打、耐力、柔韧、力量。</summary>
+								<ul>
+									<li><span>跑步（快、稳、久）</span><input type="checkbox" value="1"></li>
+									<li><span>器械健身（自重、哑铃、跳绳、仰卧板）</span><input type="checkbox" value="1"></li>
+									<li><span>熟练正当防卫</span><input type="checkbox" value="1"></li>
+								</ul>
+							</details>
+
+							<details>
+								<summary>三阶：老当益壮</summary>
+							</details>
+
+							<details>
+								<summary>四阶：延年益寿</summary>
+							</details>
+						</div>
+					</details>
+
+					<details>
+						<summary>无聊 —— 行运（天运、悦己、人缘、知己）</summary>
+						<div>
+							<details>
+								<summary>一阶：天知道的小概率</summary>
+								<ul>
+									<li><span>福彩双色球</span><input type="checkbox" value="1"></li>
+									<li><span>体彩大乐透</span><input type="checkbox" value="1"></li>
+								</ul>
+							</details>
+
+							<details>
+								<summary>二阶：悦己（夜幕1.5h、周末、离职，不误正事，不败心情）</summary>
+								<ul>
+									<li><span>读书、写作</span><input type="checkbox" value="1"></li>
+									<li><span>绘画</span><input type="checkbox" value="1"></li>
+									<li><span>跳舞</span><input type="checkbox" value="1"></li>
+									<li><span>朗诵评书：诗歌 | 散文 | 故事</span><input type="checkbox" value="1"></li>
+									<br>
+									<li><span>收藏：书籍、影视、音乐、游戏</span><input type="checkbox" value="1"></li>
+									<li><span>赏析影视：一部电影 | 两集电视剧</span><input type="checkbox" value="1"></li>
+									<li><span>赏析音乐：听歌、唱歌、演奏乐器</span><input type="checkbox" value="1"></li>
+									<li>
+										<span title="经典故事游戏化、模拟现实世界、虚拟想象奇幻怪诞世界">赏玩游戏：玩游戏、游戏编程</span>
+										<input type="checkbox" value="1">
+									</li>
+									<br>
+									<li><span>周末~短途游</span><input type="checkbox" value="1"></li>
+									<li><span>离职~国内主题游</span><input type="checkbox" value="1"></li>
+									<li><span>艺术展、博物馆、展览会</span><input type="checkbox" value="1"></li>
+									<li><span>红色旅游</span><input type="checkbox" value="1"></li>
+									<li><span>拍照</span><input type="checkbox" value="1"></li>
+									<li><span>爬山、看日出、看晚霞</span><input type="checkbox" value="1"></li>
+									<li>踢键子</span><input type="checkbox" value="1"></li>
+									<br>
+									<li>庭院（菜园、花树、荷叶鱼塘、猫狗）</span><input type="checkbox" value="1"></li>
+								</ul>
+							</details>
+
+							<details>
+								<summary>三阶：方便（笑对一切，与人方便与已方便，不违法犯罪）</summary>
+								<ul>
+									<li><span>礼尚往来：礼物、礼节、互助</span><input type="checkbox" value="1"></li>
+									<li><span>好聚：和而不同</span><input type="checkbox" value="1"></li>
+									<li><span>好散：心平气和、不怨不尤</span><input type="checkbox" value="1"></li>
+									<li><span>利益绑定</span><input type="checkbox" value="1"></li>
+								</ul>
+							</details>
+
+							<details>
+								<summary>四阶：知己</summary>
+								<ul>
+									<li><span>感情经营：同甘共苦，共同成长，视若珍宝</span><input type="checkbox" value="1"></li>
+								</ul>
+							</details>
+						</div>
+					</details>
+
+					<details>
+						<summary>缺钱 —— 攒钱（挣钱=花钱+攒钱=才能）</summary>
+						<ul>
+							<li><span>8小时工作价值交换</span><input type="checkbox" value="1"></li>
+							<li><span>职业技能提升（功能测试自动化）</span><input type="checkbox" value="1"></li>
+							<br>
+							<li>
+								<span
+									title="生活物资（生理）、情感（笑、安全、鼓励、赞同、欣赏、交往陪伴有聊、刺激）、自我实现（理想的研究、表达、创作、制造）">研究人的需求：生活物资、情感、自我实现</span>
+								<input type="checkbox" value="1">
+							</li>
+							<li><span>事业才能提升（主题研究、表达和创作，系统运营、变现）</span><input type="checkbox" value="1"></li>
+							<li><span>自媒体运营（暂缓）</span><input type="checkbox" value="1"></li>
+							<li><span>网店运营（暂缓）</span><input type="checkbox" value="1"></li>
+						</ul>
+					</details>
+
+					<details>
+						<summary>迷信 —— 审视（五识、权名利、思维、习惯）</summary>
+						<div>
+							<details>
+								<summary>一阶：取舍五识（眼耳鼻舌身）</summary>
+								<ul>
+									<li><span>非必需，不买</span><input type="checkbox" value="1"></li>
+									<li><span>非必要，不留</span><input type="checkbox" value="1"></li>
+									<li><span>乱心者，当即断联，不忆不探</span><input type="checkbox" value="1"></li>
+									<li><span>工作台唯一配置：单一任务必需、提醒闹钟、任务清单</span><input type="checkbox" value="1"></li>
+								</ul>
+							</details>
+
+							<details>
+								<summary>二阶：权名利分析</summary>
+								<ul>
+									<li><span>辨诱惑阳谋（不良贷款、资本让利、套路个人信息）</span><input type="checkbox" value="1"></li>
+									<li><span>辨违法犯罪（骗子）</span><input type="checkbox" value="1"></li>
+									<li><span>辨迷信权威</span><input type="checkbox" value="1"></li>
+								</ul>
+							</details>
+
+							<details>
+								<summary>三阶：思维沉浸</summary>
+								<ul>
+									<li><span>任务完整流程：定义、分析、计划、执行、评价、总结</span><input type="checkbox" value="1"></li>
+									<li><span>无需辅助，没有借口，即刻沉浸</span><input type="checkbox" value="1"></li>
+									<li><span>遇挫折，不败情绪</span><input type="checkbox" value="1"></li>
+									<li><span>时间紧张感把握</span><input type="checkbox" value="1"></li>
+									<li><span>不卑不亢，直到完成</span><input type="checkbox" value="1"></li>
+								</ul>
+							</details>
+
+							<details>
+								<summary>四阶：习惯内化</summary>
+								<ul>
+									<li><span>数十年如一日</span><input type="checkbox" value="1"></li>
+									<li><span>视乱心若无物</span><input type="checkbox" value="1"></li>
+								</ul>
+							</details>
+						</div>
+					</details>
+				</div>
+			</details>
+		</div>
+	</div>
+
+	<script lang="javascript">
+		// 功能一：提醒当前该做什么
+		function getMinutes(time_str) {
+			time_list = time_str.split(':')
+			sum_minutes = parseInt(time_list[0]) * 60 + parseInt(time_list[1])
+			return sum_minutes
+		}
+
+		// 根据时间段的不同，返回作息表中对应时段的活动
+		function getDoSthText() {
+			var now = new Date()
+			current_minutes = now.getHours() * 60 + now.getMinutes()
+			// current_minutes = getMinutes("20:30")
+
+			if (current_minutes >= getMinutes("21:30")) { return document.getElementById('do_sleep').innerHTML }
+			else if (current_minutes >= getMinutes("21:00")) { return document.getElementById('do_before_sleep').innerHTML }
+			else if (current_minutes >= getMinutes("20:30")) { return document.getElementById('do_evening_exercise').innerHTML }
+			else if (current_minutes >= getMinutes("19:00")) { return document.getElementById('do_evening').innerHTML }
+			else if (current_minutes >= getMinutes("17:30")) { return document.getElementById('do_sunset').innerHTML }
+			else if (current_minutes >= getMinutes("13:30")) { return document.getElementById('do_afternoon').innerHTML }
+			else if (current_minutes >= getMinutes("12:00")) { return document.getElementById('do_noon').innerHTML }
+			else if (current_minutes >= getMinutes("08:00")) { return document.getElementById('do_forenoon').innerHTML }
+			else if (current_minutes >= getMinutes("07:00")) { return document.getElementById('do_get_groceries').innerHTML }
+			else if (current_minutes >= getMinutes("06:00")) { return document.getElementById('do_breakfast').innerHTML }
+			else if (current_minutes >= getMinutes("05:30")) { return document.getElementById('do_morning_exercise').innerHTML }
+			else if (current_minutes >= getMinutes("00:00")) { return document.getElementById('do_sleep').innerHTML }
+			else { return "时间错误" }
+		}
+
+		document.getElementById('should_do_sth').innerHTML = getDoSthText()
+
+		// 功能二：点击复选框，计分
+		function countScore(objs_checkbox) {
+			// 思路：循环遍历 HTML DOM 对应范围内所有相关 checkbox，如果选中则累计分数值（属性 value 的值）给变量 scores，再实时返回展示 scores 值。
+			var scores = 0;
+			// var objs_checkbox = document.querySelectorAll(css_selector_str)
+			for (var i = 0; i < objs_checkbox.length; i++)
+				if (objs_checkbox[i].checked) {
+					scores += parseInt(objs_checkbox[i].value);
+				}
+			return scores
+		}
+
+		// document.getElementById(id).onclick = function(){code}
+		function onclickCheckbox(css_selector_str, id_str) {
+			var objs_checkbox = document.querySelectorAll(css_selector_str)
+			for (var i = 0; i < objs_checkbox.length; i++) {
+				objs_checkbox[i].onclick = function () {
+					document.getElementById(id_str).innerText = countScore(objs_checkbox)
+				}
+			}
+		}
+
+		onclickCheckbox("#daily_schedule_score td input", "show_daily_schedule_score")
+		onclickCheckbox("#daily_score li input", "show_daily_score")
+	</script>
+</body>
+
+</html>
